@@ -1,0 +1,243 @@
+Ranger
+1
+2
+100
+1
+True
+0
+Kruben's Knights
+R
+Archer
+3
+10
+100
+1
+False
+0
+Kruben's Knights
+R
+Archer
+17
+2
+100
+1
+True
+0
+Aisha's Warriors
+R
+Ranger
+9
+8
+100
+1
+False
+0
+Kruben's Knights
+R
+Archer
+8
+5
+100
+1
+False
+0
+Kruben's Knights
+R
+Archer
+16
+4
+100
+1
+True
+0
+Kruben's Knights
+R
+Archer
+1
+10
+100
+1
+False
+0
+Kruben's Knights
+R
+Ranger
+10
+7
+100
+1
+False
+0
+Kruben's Knights
+R
+Ranger
+4
+2
+100
+1
+True
+0
+Aisha's Warriors
+R
+Archer
+16
+16
+100
+1
+True
+0
+Aisha's Warriors
+R
+Archer
+15
+18
+100
+1
+False
+0
+Aisha's Warriors
+R
+Ranger
+10
+1
+100
+1
+False
+0
+Aisha's Warriors
+R
+Archer
+9
+17
+100
+1
+False
+0
+Aisha's Warriors
+R
+Archer
+3
+16
+100
+1
+False
+0
+Aisha's Warriors
+R
+Ranger
+2
+1
+100
+1
+False
+0
+Kruben's Knights
+R
+Ranger
+14
+7
+100
+1
+False
+0
+Aisha's Warriors
+R
+Archer
+8
+17
+100
+1
+True
+0
+Kruben's Knights
+R
+Ranger
+3
+0
+100
+1
+False
+0
+Kruben's Knights
+R
+Ranger
+7
+15
+100
+1
+True
+0
+Aisha's Warriors
+R
+Ranger
+9
+0
+100
+1
+False
+0
+Aisha's Warriors
+R
+Archer
+15
+13
+100
+1
+False
+0
+Kruben's Knights
+R
+Ranger
+16
+3
+100
+1
+True
+0
+Aisha's Warriors
+R
+Archer
+6
+17
+100
+1
+False
+0
+Kruben's Knights
+R
+Ranger
+3
+17
+100
+1
+False
+0
+Aisha's Warriors
+R
+Archer
+2
+10
+100
+1
+False
+0
+Aisha's Warriors
+R
+Archer
+10
+0
+100
+1
+True
+0
+Kruben's Knights
+R
+Ranger
+3
+1
+100
+1
+False
+0
+Aisha's Warriors
+R

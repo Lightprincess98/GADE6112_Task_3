@@ -1,0 +1,10 @@
+C:\Users\Alexi\source\repos\RTSGame\RTSGame\bin\Debug\RTSGame.exe.config
+C:\Users\Alexi\source\repos\RTSGame\RTSGame\bin\Debug\RTSGame.exe
+C:\Users\Alexi\source\repos\RTSGame\RTSGame\bin\Debug\RTSGame.pdb
+C:\Users\Alexi\source\repos\RTSGame\RTSGame\obj\Debug\RTSGame.csprojAssemblyReference.cache
+C:\Users\Alexi\source\repos\RTSGame\RTSGame\obj\Debug\RTSGame.Properties.Resources.resources
+C:\Users\Alexi\source\repos\RTSGame\RTSGame\obj\Debug\RTSGame.csproj.GenerateResource.cache
+C:\Users\Alexi\source\repos\RTSGame\RTSGame\obj\Debug\RTSGame.csproj.CoreCompileInputs.cache
+C:\Users\Alexi\source\repos\RTSGame\RTSGame\obj\Debug\RTSGame.exe
+C:\Users\Alexi\source\repos\RTSGame\RTSGame\obj\Debug\RTSGame.pdb
+C:\Users\Alexi\source\repos\RTSGame\RTSGame\obj\Debug\RTSGame.RTSGame.resources
