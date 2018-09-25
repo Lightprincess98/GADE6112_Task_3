@@ -26,9 +26,12 @@ namespace RTSGame
             map.setBuildings();
         }
 
+        //Hosts the game Rules & handles all the combat methods
         public void Combat()
         {
             Random rnd = new Random();
+
+           ((ResourceBuilding)map.BuildingsOnMap[1]).generateResource();
 
             for (int i = 0; i < map.UnitsOnMapNum - 1; i++)
             {
@@ -42,6 +45,7 @@ namespace RTSGame
 
                 if ((map.UnitsonMap[i].InRange(closest)))
                 {
+
                     map.UnitsonMap[i].combat(closest);
                 }
 
@@ -118,6 +122,11 @@ namespace RTSGame
             map.loadRangedUnits();
             map.loadFactory();
             map.loadResource();
+        }
+
+        public void spendResources(int x)
+        {
+            ((ResourceBuilding)map.BuildingsOnMap[1]).removeResource(x);
         }
         #endregion
 

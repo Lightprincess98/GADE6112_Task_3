@@ -58,6 +58,7 @@ namespace RTSGame
             return false;
         }
 
+        //Gets the list of Units and checks which unit is closest to the current unit.
         public override Unit nearestUnit(List<Unit> list)
         {
             Unit closest = null;

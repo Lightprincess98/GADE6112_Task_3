@@ -14,7 +14,7 @@ namespace RTSGame
         #region Variables
         private const int MAX_RANDOM_UNITS = 50;
         public const string FIELD_SYMBOL = ".";
-        private string[,] grid = new string[20, 20];
+        private string[,] grid = new string[20,20];
         private List<Unit> unitsOnMap = new List<Unit>();
         private List<Building> buildingsOnMap = new List<Building>();
         private int unitsOnMapNum = 0;
@@ -63,6 +63,7 @@ namespace RTSGame
             }
         }
 
+        //Places all the units on the Map.
         public void SetUnits()
         {
             Random rnd = new Random();
@@ -76,7 +77,7 @@ namespace RTSGame
                     tempy = rnd.Next(0, 19);
                 }
                 while (grid[tempx, tempy] != FIELD_SYMBOL);
-                if (i < rnd.Next(0, 51))
+                if (i < rnd.Next(0, 41))
                 {
                     string name;
                     bool attackOption;
@@ -107,6 +108,41 @@ namespace RTSGame
                     symbol = "R";
 
                     unitsOnMap.Add(new RangedUnit(name,tempx, tempy, 100, 1, attackOption, 5, team,symbol));
+                    grid[unitsOnMap[unitsOnMapNum].X, unitsOnMap[unitsOnMapNum].Y] = unitsOnMap[unitsOnMapNum].Symbol;
+                    unitsOnMapNum++;
+                }
+
+                if(i < rnd.Next(41, 51))
+                {
+                    string name;
+                    bool attackOption;
+                    int randomAttackRange;
+                    string team;
+                    string symbol;
+                    name = rnd.Next(0, 2) == 1 ? "Foot Soldier" : "Tank";
+                    attackOption = rnd.Next(0, 2) == 1 ? true : false;
+                    randomAttackRange = rnd.Next(1, 3);
+                    team = "Willie's Paladins";
+                    symbol = "M";
+                    Unit tmp = new MeleeUnit(name, tempx, tempy, 100, 1, attackOption, 1, team, symbol);
+                    unitsOnMap.Add(tmp);
+                    grid[unitsOnMap[unitsOnMapNum].X, unitsOnMap[unitsOnMapNum].Y] = unitsOnMap[unitsOnMapNum].Symbol;
+                    unitsOnMapNum++;
+                }
+                else
+                {
+                    string name;
+                    bool attackOption;
+                    int randomAttackRange;
+                    string team;
+                    string symbol;
+                    name = rnd.Next(0, 2) == 1 ? "Archer" : "Ranger";
+                    attackOption = rnd.Next(0, 2) == 1 ? true : false;
+                    randomAttackRange = rnd.Next(1, 5);
+                    team = "Willie's Paladins";
+                    symbol = "R";
+
+                    unitsOnMap.Add(new RangedUnit(name, tempx, tempy, 100, 1, attackOption, 5, team, symbol));
                     grid[unitsOnMap[unitsOnMapNum].X, unitsOnMap[unitsOnMapNum].Y] = unitsOnMap[unitsOnMapNum].Symbol;
                     unitsOnMapNum++;
                 }
@@ -149,18 +185,31 @@ namespace RTSGame
             }
         }
 
-
+        //Checks the health of all the units and remove them from list if needed.
         public void checkHealth()
         {
             for (int i = 0; i < unitsOnMapNum; i++)
+            {
+                if(unitsOnMap[i].Health >= 10)
+                {
+                    if(unitsOnMap[i].Faction == "Kruben's Knights")
+                    {
+                        unitsOnMap[i].Faction = "Aisha's Warriors";
+                    }
+                    else
+                    {
+                        unitsOnMap[i].Faction = "Kruben's Knights";
+                    }
+                }
+
                 if (unitsOnMap[i].IsDead())
                 {
                     grid[unitsOnMap[i].X, unitsOnMap[i].Y] = FIELD_SYMBOL;
                     unitsOnMap.RemoveAt(i);
                     unitsOnMapNum--;
                 }
+            }
         }
-        #endregion
 
         public void loadMeleeUnits()
         {
@@ -192,7 +241,7 @@ namespace RTSGame
                     randomAttackRange = int.Parse(reader.ReadLine());
                     team = reader.ReadLine();
                     symbol = reader.ReadLine();
-                    MeleeUnit m = new MeleeUnit(name,x,y,health,uSpeed,attackOption,randomAttackRange,team,symbol);
+                    MeleeUnit m = new MeleeUnit(name, x, y, health, uSpeed, attackOption, randomAttackRange, team, symbol);
                     unitsOnMap.Add(m);
                     grid[x, y] = symbol;
                     unitsOnMapNum++;
@@ -248,7 +297,7 @@ namespace RTSGame
                     RangedUnit m = new RangedUnit(name, x, y, health, uSpeed, attackOption, randomAttackRange, team,
                         symbol);
                     unitsOnMap.Add(m);
-                    grid[x,y] = symbol;
+                    grid[x, y] = symbol;
                     unitsOnMapNum++;
                     input = reader.ReadLine(); // secondary read
                 }
@@ -271,49 +320,49 @@ namespace RTSGame
         }
 
         public void loadFactory()
+        {
+            FileStream inFile = null;
+            StreamReader reader = null;
+            string input;
+            int x;
+            int y;
+            int health;
+            string team;
+            string symbol;
+            try
             {
-                FileStream inFile = null;
-                StreamReader reader = null;
-                string input;
-                int x;
-                int y;
-                int health;
-                string team;
-                string symbol;
-                try
+                inFile = new FileStream(@"SaveGame\FactoryBuilding.txt", FileMode.Open, FileAccess.Read);
+                reader = new StreamReader(inFile);
+                input = reader.ReadLine();      // priming read
+                while (input != null)
                 {
-                    inFile = new FileStream(@"SaveGame\FactoryBuilding.txt", FileMode.Open, FileAccess.Read);
-                    reader = new StreamReader(inFile);
-                    input = reader.ReadLine();      // priming read
-                    while (input != null)
-                    {
-                        x = int.Parse(input);
-                        y = int.Parse(reader.ReadLine());
-                        health = int.Parse(reader.ReadLine());
-                        team = reader.ReadLine();
-                        symbol = reader.ReadLine();
-                        FactoryBuilding f = new FactoryBuilding(x,y,health,team,symbol);
-                        buildingsOnMap.Add(f);
-                        grid[x, y] = symbol;
+                    x = int.Parse(input);
+                    y = int.Parse(reader.ReadLine());
+                    health = int.Parse(reader.ReadLine());
+                    team = reader.ReadLine();
+                    symbol = reader.ReadLine();
+                    FactoryBuilding f = new FactoryBuilding(x, y, health, team, symbol);
+                    buildingsOnMap.Add(f);
+                    grid[x, y] = symbol;
                     buildingsOnMapNum++;
-                        input = reader.ReadLine();      // secondary read
-                    }
+                    input = reader.ReadLine();      // secondary read
+                }
+                reader.Close();
+                inFile.Close();
+            }
+            catch (Exception fe)
+            {
+                Debug.WriteLine(fe.Message);
+            }
+            finally
+            {
+                if (inFile != null)
+                {
                     reader.Close();
                     inFile.Close();
                 }
-                catch (Exception fe)
-                {
-                    Debug.WriteLine(fe.Message);
-                }
-                finally
-                {
-                    if (inFile != null)
-                    {
-                        reader.Close();
-                        inFile.Close();
-                    }
-                }
             }
+        }
 
         public void loadResource()
         {
@@ -339,7 +388,7 @@ namespace RTSGame
                     symbol = reader.ReadLine();
                     ResourceBuilding f = new ResourceBuilding(x, y, health, team, symbol);
                     buildingsOnMap.Add(f);
-                    grid[x,y] = symbol;
+                    grid[x, y] = symbol;
                     buildingsOnMapNum++;
                     input = reader.ReadLine();      // secondary read
                 }
@@ -359,5 +408,6 @@ namespace RTSGame
                 }
             }
         }
+        #endregion
     }
 }

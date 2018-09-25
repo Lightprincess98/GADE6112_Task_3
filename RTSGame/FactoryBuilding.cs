@@ -10,10 +10,13 @@ namespace RTSGame
 {
     class FactoryBuilding : Building
     {
+        #region Variables
         private const int UNITSTOPRODUCE = 1;
         private int productionTicks = 5;
         private int spawnX, spawnY;
+        #endregion
 
+        #region Constructor & Methods
         public FactoryBuilding(int x, int y, int health, string faction, string symbol) : base(x, y, health, faction, symbol)
         {
         }
@@ -84,5 +87,6 @@ namespace RTSGame
                 }
             }
         }
+        #endregion
     }
 }

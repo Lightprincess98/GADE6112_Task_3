@@ -39,6 +39,12 @@
             this.lblUnitInformation = new System.Windows.Forms.Label();
             this.btnLoadGame = new System.Windows.Forms.Button();
             this.btnSaveGame = new System.Windows.Forms.Button();
+            this.lblTimer = new System.Windows.Forms.Label();
+            this.btnUseResources = new System.Windows.Forms.Button();
+            this.txtResourcesUse = new System.Windows.Forms.TextBox();
+            this.lblAvailableResources = new System.Windows.Forms.Label();
+            this.lblResourcesAvailable = new System.Windows.Forms.Label();
+            this.lblUseResources = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // rtbMap
@@ -109,9 +115,9 @@
             // lblUnitInformation
             // 
             this.lblUnitInformation.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblUnitInformation.Location = new System.Drawing.Point(568, 45);
+            this.lblUnitInformation.Location = new System.Drawing.Point(568, 61);
             this.lblUnitInformation.Name = "lblUnitInformation";
-            this.lblUnitInformation.Size = new System.Drawing.Size(229, 316);
+            this.lblUnitInformation.Size = new System.Drawing.Size(402, 300);
             this.lblUnitInformation.TabIndex = 2;
             // 
             // btnLoadGame
@@ -142,11 +148,72 @@
             this.btnSaveGame.UseVisualStyleBackColor = true;
             this.btnSaveGame.Click += new System.EventHandler(this.btnSaveGame_Click);
             // 
+            // lblTimer
+            // 
+            this.lblTimer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTimer.Location = new System.Drawing.Point(568, 9);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(406, 35);
+            this.lblTimer.TabIndex = 5;
+            // 
+            // btnUseResources
+            // 
+            this.btnUseResources.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnUseResources.ImageIndex = 1;
+            this.btnUseResources.ImageList = this.imageList1;
+            this.btnUseResources.Location = new System.Drawing.Point(985, 412);
+            this.btnUseResources.Name = "btnUseResources";
+            this.btnUseResources.Size = new System.Drawing.Size(75, 66);
+            this.btnUseResources.TabIndex = 6;
+            this.btnUseResources.Text = "Use";
+            this.btnUseResources.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnUseResources.UseVisualStyleBackColor = true;
+            this.btnUseResources.Click += new System.EventHandler(this.btnUseResources_Click);
+            // 
+            // txtResourcesUse
+            // 
+            this.txtResourcesUse.Location = new System.Drawing.Point(960, 372);
+            this.txtResourcesUse.Name = "txtResourcesUse";
+            this.txtResourcesUse.Size = new System.Drawing.Size(100, 22);
+            this.txtResourcesUse.TabIndex = 8;
+            // 
+            // lblAvailableResources
+            // 
+            this.lblAvailableResources.AutoSize = true;
+            this.lblAvailableResources.Location = new System.Drawing.Point(616, 375);
+            this.lblAvailableResources.Name = "lblAvailableResources";
+            this.lblAvailableResources.Size = new System.Drawing.Size(141, 17);
+            this.lblAvailableResources.TabIndex = 9;
+            this.lblAvailableResources.Text = "Available Resources:";
+            // 
+            // lblResourcesAvailable
+            // 
+            this.lblResourcesAvailable.AutoSize = true;
+            this.lblResourcesAvailable.Location = new System.Drawing.Point(773, 375);
+            this.lblResourcesAvailable.Name = "lblResourcesAvailable";
+            this.lblResourcesAvailable.Size = new System.Drawing.Size(0, 17);
+            this.lblResourcesAvailable.TabIndex = 10;
+            // 
+            // lblUseResources
+            // 
+            this.lblUseResources.AutoSize = true;
+            this.lblUseResources.Location = new System.Drawing.Point(849, 377);
+            this.lblUseResources.Name = "lblUseResources";
+            this.lblUseResources.Size = new System.Drawing.Size(105, 17);
+            this.lblUseResources.TabIndex = 11;
+            this.lblUseResources.Text = "Use Resources";
+            // 
             // RTSGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 517);
+            this.ClientSize = new System.Drawing.Size(1076, 517);
+            this.Controls.Add(this.lblUseResources);
+            this.Controls.Add(this.lblResourcesAvailable);
+            this.Controls.Add(this.lblAvailableResources);
+            this.Controls.Add(this.txtResourcesUse);
+            this.Controls.Add(this.btnUseResources);
+            this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.btnSaveGame);
             this.Controls.Add(this.btnLoadGame);
             this.Controls.Add(this.lblUnitInformation);
@@ -159,6 +226,7 @@
             this.Text = "RTS Game";
             this.Load += new System.EventHandler(this.RTSGame_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -173,6 +241,12 @@
         private System.Windows.Forms.Label lblUnitInformation;
         private System.Windows.Forms.Button btnLoadGame;
         private System.Windows.Forms.Button btnSaveGame;
+        private System.Windows.Forms.Label lblTimer;
+        private System.Windows.Forms.Button btnUseResources;
+        private System.Windows.Forms.TextBox txtResourcesUse;
+        private System.Windows.Forms.Label lblAvailableResources;
+        private System.Windows.Forms.Label lblResourcesAvailable;
+        private System.Windows.Forms.Label lblUseResources;
     }
 }
 
