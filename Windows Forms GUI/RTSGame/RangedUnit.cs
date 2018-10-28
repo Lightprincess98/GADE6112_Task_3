@@ -16,39 +16,52 @@ namespace RTSGame
 
         #endregion
 
-        #region Methods and Constructor
+        #region Constructors
 
-        public RangedUnit(string name, int x, int y, int health, int speed, bool attack, int attackRange, string faction, string Symbol)
-            : base(name, x, y, health, speed, attack, attackRange, faction, Symbol)
+        public RangedUnit()
+        {
+
+        }
+
+        public RangedUnit(int x, int y, int health, int speed, bool attack, int attackRange, string faction, string symbol, string name)
+            : base(x, y, health, speed, attack, attackRange, faction, symbol, name)
         {
         }
+
+        #endregion
+
+        #region Destructor
 
         ~RangedUnit()
         {
 
         }
 
-        public override void Move(int x, int y)
+        #endregion
+
+        #region Methods
+
+        public override void move(int x, int y)
         {
             if (x >= 0 && x < 20)
             {
-                X = x;
+                this.x = x;
             }
             if (y >= 0 && y < 20)
             {
-                Y = y;
+                this.y = y;
             }
         }
 
         public override void combat(Unit enemy)
         {
-            if (this.InRange(enemy))
+            if (this.inRange(enemy))
             {
                 enemy.Health -= DAMAGE;
             }
         }
 
-        public override bool InRange(Unit enemy)
+        public override bool inRange(Unit enemy)
         {
             if (!this.Faction.Equals(enemy.Faction))
             {
@@ -91,7 +104,7 @@ namespace RTSGame
             return closest;
         }
 
-        public override bool IsDead()
+        public override bool isDead()
         {
             return (this.Health <= 0);
         }
@@ -110,7 +123,7 @@ namespace RTSGame
             return output;
         }
 
-        public override void saveUnit()
+        public override void save()
         {
             FileStream outFile = null;
             StreamWriter writer = null;

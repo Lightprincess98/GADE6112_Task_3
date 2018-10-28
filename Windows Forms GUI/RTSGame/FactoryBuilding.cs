@@ -11,34 +11,67 @@ namespace RTSGame
     class FactoryBuilding : Building
     {
         #region Variables
-        private const int UNITSTOPRODUCE = 1;
+        private int unitsToProduce;
         private int productionTicks = 5;
-        private int spawnX, spawnY;
+        private int spawnX;
+        private int spawnY;
         #endregion
 
-        #region Constructor & Methods
-        public FactoryBuilding(int x, int y, int health, string faction, string symbol) : base(x, y, health, faction, symbol)
+        #region Constructors
+
+        public FactoryBuilding()
         {
+
         }
+
+        public FactoryBuilding(int x, int y, int health, string faction, string symbol,int unitsToProduce, int spawnX, int spawnY) : base(x, y, health, faction, symbol)
+        {
+            this.unitsToProduce = unitsToProduce;
+            this.spawnX = spawnX;
+            this.spawnY = spawnY;
+        }
+
+        #endregion
+
+        #region Destructor
+
+        ~FactoryBuilding()
+        {
+
+        }
+
+        #endregion
+
+        #region Methods
 
         public override bool isDead()
         {
             return (this.Health <= 0);
         }
 
-        public void ProduceUnits(Unit u)
+        public Unit ProduceUnits()
         {
-            if (productionTicks == 0)
+            if(unitsToProduce > 0)
             {
-                productionTicks = 5;
-                spawnX = X;
-                spawnY = Y + 1;
-                u.X = spawnX;
-                u.Y = spawnY;
+                Random rnd = new Random();
+                if(rnd.Next(0,2) == 0)
+                {
+                    //MeleeUnit
+                    MeleeUnit mU = new MeleeUnit(spawnX, spawnY, 100, 1, true, 1, this.faction, "M", "Tank");
+                    unitsToProduce--;
+                    return mU;
+                }
+                else
+                {
+                    //RangedUnit
+                    RangedUnit rU = new RangedUnit(spawnX, spawnY, 100, 1, true, 1, this.faction, "R", "Ranger");
+                    unitsToProduce--;
+                    return rU;
+                }
             }
             else
             {
-                productionTicks--;
+                return null;
             }
         }
 
@@ -53,7 +86,7 @@ namespace RTSGame
             return output;
         }
 
-        public override void saveBuilding()
+        public override void save()
         {
             FileStream outFile = null;
             StreamWriter writer = null;
@@ -87,6 +120,7 @@ namespace RTSGame
                 }
             }
         }
+
         #endregion
     }
 }

@@ -31,7 +31,18 @@ namespace RTSGame
         {
             Random rnd = new Random();
 
-           ((ResourceBuilding)map.BuildingsOnMap[1]).generateResource();
+            foreach(Building building in map.BuildingsOnMap)
+            {
+                if(building is ResourceBuilding resourceBuilding)
+                {
+                    resourceBuilding.generateResource();
+                }
+
+                if(building is FactoryBuilding factoryBuilding)
+                {
+                    factoryBuilding.ProduceUnits();
+                }
+            }
 
             for (int i = 0; i < map.UnitsOnMapNum - 1; i++)
             {
@@ -43,7 +54,7 @@ namespace RTSGame
                     map.update(map.UnitsonMap[i], map.UnitsonMap[i].X, map.UnitsonMap[i].Y);
                 }
 
-                if ((map.UnitsonMap[i].InRange(closest)))
+                if ((map.UnitsonMap[i].inRange(closest)))
                 {
 
                     map.UnitsonMap[i].combat(closest);
@@ -107,12 +118,12 @@ namespace RTSGame
 
             for (int i = 0; i < map.UnitsonMap.Count; i++)
             {
-                map.UnitsonMap[i].saveUnit();
+                map.UnitsonMap[i].save();
             }
 
             for (int j = 0; j < map.BuildingsOnMap.Count; j++)
             {
-                map.BuildingsOnMap[j].saveBuilding();
+                map.BuildingsOnMap[j].save();
             }
         }
 

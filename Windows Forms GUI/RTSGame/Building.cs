@@ -8,7 +8,7 @@ namespace RTSGame
 {
     abstract class Building
     {
-        #region Instance Variables
+        #region Variables
 
         protected int x, y;
         protected int health;
@@ -17,7 +17,11 @@ namespace RTSGame
 
         #endregion
 
-        #region Methods and Constrcutor
+        #region Constrcutors
+        public Building()
+        {
+
+        }
 
         public Building(int x, int y, int health, string faction, string symbol)
         {
@@ -28,19 +32,18 @@ namespace RTSGame
             this.symbol = symbol;
         }
 
+        #endregion
+
+        #region Destructor
+
         ~Building()
         {
 
         }
 
-        abstract public bool isDead();
-
-        abstract public string toString();
-
-        abstract public void saveBuilding();
         #endregion
 
-        #region Acessors
+        #region Accessors
 
         public int X
         {
@@ -72,5 +75,16 @@ namespace RTSGame
             set { symbol = value; }
         }
         #endregion
+
+        #region Methods
+
+        abstract public bool isDead();
+
+        abstract public string toString();
+
+        abstract public void save();
+
+        #endregion
+
     }
 }

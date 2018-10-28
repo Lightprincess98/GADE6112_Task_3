@@ -11,14 +11,49 @@ namespace RTSGame
     class ResourceBuilding : Building
     {
         #region Variables
-        private int availableResources;
-        private const int RESOURCESTOMAKE = 5;
+        private string resourceType;
+        private int resourceTicks;
+        private int resourcesRemaining;
+        private int availableResources = 0;
         #endregion
 
-        #region Constructor & Methods
-        public ResourceBuilding(int x, int y, int health, string faction, string symbol) : base(x,y,health,faction,symbol)
+        #region Constructors
+
+        public ResourceBuilding()
         {
+
         }
+
+        public ResourceBuilding(int x, int y, int health, string faction, string symbol, string resourceType, int resourceTicks, int resourcesRemaining, int availableResources) : base(x,y,health,faction,symbol)
+        {
+            this.resourceType = resourceType;
+            this.resourceTicks = resourceTicks;
+            this.resourcesRemaining = resourcesRemaining;
+            this.availableResources = availableResources;
+        }
+
+        #endregion
+
+        #region Destructor
+
+        ~ResourceBuilding()
+        {
+
+        }
+
+        #endregion
+
+        #region Accessors
+
+        public int AvailableResources
+        {
+            get { return availableResources; }
+            set { availableResources = value; }
+        }
+
+        #endregion
+
+        #region Methods
 
         public override bool isDead()
         {
@@ -32,28 +67,14 @@ namespace RTSGame
                             + "Health: " + Health + Environment.NewLine
                             + "Faction: " + faction + Environment.NewLine
                             + "Symbol" + symbol + Environment.NewLine
-                            + "Resources Available: " + availableResources + Environment.NewLine;
+                            + "Resource Type: " + resourceType + Environment.NewLine
+                            + "Resources Available: " + availableResources + Environment.NewLine
+                            + "Resources Remaining: " + resourcesRemaining + Environment.NewLine;
 
             return output;
         }
 
-        public void generateResource()
-        {
-            availableResources += RESOURCESTOMAKE;
-        }
-
-        public void removeResource(int x)
-        {
-            availableResources = availableResources - x;
-        }
-
-        public int AvailableResources
-        {
-            get { return availableResources; }
-            set { availableResources = value; }
-        }
-
-        public override void saveBuilding()
+        public override void save()
         {
             FileStream outFile = null;
             StreamWriter writer = null;
@@ -69,6 +90,10 @@ namespace RTSGame
                 writer.WriteLine(Health);
                 writer.WriteLine(Faction);
                 writer.WriteLine(Symbol);
+                writer.WriteLine(resourceType);
+                writer.WriteLine(resourceTicks);
+                writer.WriteLine(resourcesRemaining);
+                writer.WriteLine(availableResources);
 
                 // close the file
                 writer.Close();
@@ -87,6 +112,21 @@ namespace RTSGame
                 }
             }
         }
-        #endregion
+
+        public void generateResource()
+        {
+            if(resourcesRemaining >= 0)
+            {
+                resourcesRemaining -= resourceTicks;
+                availableResources += resourceTicks;
+            }
+        }
+
+        public void removeResource(int amount)
+        {
+            availableResources = availableResources - amount;
+        }
+
+#endregion
     }
 }

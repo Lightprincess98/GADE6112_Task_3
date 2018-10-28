@@ -14,8 +14,7 @@ namespace RTSGame
 {
     abstract class Unit
     {
-        #region Instance Variables
-        protected string name;
+        #region Variables
         protected int x, y;
         protected int health;
         protected int speed;
@@ -23,13 +22,19 @@ namespace RTSGame
         protected int attackRange;
         protected string faction;
         protected string symbol;
+        protected string name;
 
         #endregion
 
-        #region Methods and Constructor
+        #region Constructors
+
+        public Unit()
+        {
+
+        }
 
         //Constructor
-        public Unit(string name,int x, int y, int health,int speed, bool attack, int attackRange, string faction, string Symbol)
+        public Unit(int x, int y, int health,int speed, bool attack, int attackRange, string faction, string symbol, string name)
         {
             this.name = name;
             this.x = x;
@@ -39,37 +44,22 @@ namespace RTSGame
             this.attack = attack;
             this.AttackRange = AttackRange;
             this.faction = faction;
-            this.symbol = Symbol;
+            this.symbol = symbol;
         }
-        
+
+        #endregion
+
+        #region Destructor
+
         //Destructor
         ~Unit()
         {
 
         }
 
-        abstract public void Move(int xPosition, int yPosition);
-
-        abstract public void combat(Unit enemy);
-
-        abstract public bool InRange(Unit enemy);
-
-        abstract public Unit nearestUnit(List<Unit> list);
-
-        abstract public bool IsDead();
-
-        abstract public string toString();
-
-        abstract public void saveUnit();
-#endregion
+        #endregion
 
         #region Accessors
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
 
         public int X
         {
@@ -118,6 +108,30 @@ namespace RTSGame
             get { return symbol; }
             set { symbol = value; }
         }
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        #endregion
+
+        #region Methods
+
+        abstract public void move(int x, int y);
+
+        abstract public void combat(Unit enemy);
+
+        abstract public bool inRange(Unit enemy);
+
+        abstract public Unit nearestUnit(List<Unit> list);
+
+        abstract public bool isDead();
+
+        abstract public string toString();
+
+        abstract public void save();
 
         #endregion
     }
