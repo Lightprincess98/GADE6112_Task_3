@@ -238,11 +238,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   height: 20
   width: 20
-  healthFull: {fileID: 21300000, guid: 707ec079edda24e46a6ec7a2d83808b9, type: 3}
-  health80: {fileID: 21300002, guid: 707ec079edda24e46a6ec7a2d83808b9, type: 3}
-  health60: {fileID: 21300004, guid: 707ec079edda24e46a6ec7a2d83808b9, type: 3}
-  health40: {fileID: 21300006, guid: 707ec079edda24e46a6ec7a2d83808b9, type: 3}
-  health20: {fileID: 21300008, guid: 707ec079edda24e46a6ec7a2d83808b9, type: 3}
 --- !u!4 &888046349
 Transform:
   m_ObjectHideFlags: 0
